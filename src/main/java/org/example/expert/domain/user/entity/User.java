@@ -44,4 +44,10 @@ public class User extends Timestamped {
     public void updateRole(UserRole userRole) {
         this.userRole = userRole;
     }
+
+    public static boolean validateNewPassword(String newPassword) {
+        return newPassword.length() < 8 ||
+                !newPassword.matches(".*\\d.*") ||
+                !newPassword.matches(".*[A-Z].*");
+    }
 }
