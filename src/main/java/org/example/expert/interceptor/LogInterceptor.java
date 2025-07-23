@@ -15,7 +15,7 @@ public class LogInterceptor implements HandlerInterceptor {
         String url = request.getRequestURI();
 
         if (url.startsWith("/admin")) {
-            log.info("[{}][{}]", LocalDateTime.now(), url);
+            log.info("[LogInterceptor][{}][{}]", LocalDateTime.now(), url);
         }
 
         return true;
