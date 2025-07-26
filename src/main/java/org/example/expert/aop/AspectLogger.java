@@ -28,9 +28,15 @@ public class AspectLogger {
     private final JwtUtil jwtUtil;
     private final ObjectMapper objectMapper;
 
+    /**
+     * domain 패키지 하위 패키지 중 Controller 패키지 중 Admin 이 포함된 패키지를 PointCut 설정
+     */
     @Pointcut("execution(* org.example.expert.domain..controller..*Admin*.*(..))")
     private void adminControllers() { }
 
+    /**
+     * Around: 실행 전/후 모두 제어
+     */
     @Around(value = "adminControllers()")
     public Object logAdminControllers(ProceedingJoinPoint joinPoint) throws Throwable {
         HttpServletRequest request = getServletRequest();

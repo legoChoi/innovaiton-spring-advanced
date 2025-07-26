@@ -14,6 +14,10 @@ import java.io.IOException;
 
 
 public class ServletWrapperFilter extends OncePerRequestFilter {
+
+    /**
+     * Http 요청, 응답 Body를 여러번 읽을 수 있게 캐싱
+     */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         ServletRequest requestWrapper = new ContentCachingRequestWrapper(request);
