@@ -39,14 +39,16 @@ public class AspectLogger {
      */
     @Around(value = "adminControllers()")
     public Object logAdminControllers(ProceedingJoinPoint joinPoint) throws Throwable {
+        // Controller 로직 실행 전 요청 바디 로깅
         HttpServletRequest request = getServletRequest();
         AdminLog adminLog = createAdminLog(request);
         String requestBody = getRequestBody(request.getMethod());
         String requestLog = buildLog("request", adminLog, requestBody);
         log.info(requestLog);
 
-        Object result = joinPoint.proceed();
+        Object result = joinPoint.proceed(); // Controller 로직 실행
 
+        // Controller 로직 실행 후 응답 바디 로깅
         String responseBody = getResponseBody(result);
         String responseLog = buildLog("response", adminLog, responseBody);
         log.info(responseLog);
