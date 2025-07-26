@@ -13,10 +13,7 @@ public class LogInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         String url = request.getRequestURI();
-
-        if (url.startsWith("/admin")) {
-            log.info("[LogInterceptor][{}][{}]", LocalDateTime.now(), url);
-        }
+        log.info("[LogInterceptor][{}][{}]", LocalDateTime.now(), url);
 
         return true;
     }
