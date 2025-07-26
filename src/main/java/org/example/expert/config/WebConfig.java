@@ -22,6 +22,6 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LogInterceptor())
-                .addPathPatterns("/**");
+                .addPathPatterns("/admin/**"); // /admin 으로 시작하는 요청에만 적용
     }
 }
